@@ -57,5 +57,14 @@ def test_greet_afternoon(mocker):
     #Create a Greeter instance.
     #Use mocker.patch.object to mock both helper methods.
     #Call greet() and assert the result.
-#5 Confirm that all three test pass & -v glag prints each test name.
+def test_greet_evening_unknown_user(mocker):
+    greeter = Greeter()
+
+    mocker.patch.object(greeter, "get_current_hour", return_value=21)
+    mocker.patch.object(greeter, "get_username", return_value="Guest")
+
+    result = greeter.greet(99)
+
+    assert result == "Good evening, Guest!"
+#5 Confirm that all three test pass & -v flag prints each test name.-Done
 #6 Create a fourth Add a fourth test that checks the boundary at hour 5 — the exact point where "evening" ends and "morning" begins.
