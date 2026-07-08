@@ -26,15 +26,33 @@ def test_greet_evening_unknown_user(mocker):
 
 #Requirements#
 #1. Complete Set Up follow 4 steps listed. -DONE
-#2. Open test_greeter.py and examine 3 test functions.
+#2. Open test_greeter.py and examine 3 test functions.-DONE
 #3. Create a mock test for test_greet_morning that follows three rules.
     #Create a Greeter instance.
     #Use mocker.patch.object to mock both helper methods.
     #Call greet() and assert the result.
+def test_greet_morning(mocker):
+    greeter = Greeter()
+
+    mocker.patch.object(greeter, "get_current_hour", return_value=9)
+    mocker.patch.object(greeter, "get_username", return_value="Alice")
+
+    result = greeter.greet(1)
+
+    assert result == "Good morning, Alice!"
 #4. Create a mock test for test_greet_afternoon that follows three rules.
      #Create a Greeter instance.
     #Use mocker.patch.object to mock both helper methods.
-    #Call greet() and assert the result.   
+    #Call greet() and assert the result.  
+def test_greet_afternoon(mocker):
+    greeter = Greeter()
+
+    mocker.patch.object(greeter, "get_current_hour", return_value=14)
+    mocker.patch.object(greeter, "get_username", return_value="Bob")
+
+    result = greeter.greet(2)
+
+    assert result == "Good afternoon, Bob!" 
 #4. Create a mock test for test_greet_evening_unknown_use that follows three rules.
     #Create a Greeter instance.
     #Use mocker.patch.object to mock both helper methods.
